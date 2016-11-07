@@ -12,9 +12,16 @@ namespace GameCaro
 {
     public partial class Form1 : Form
     {
+        private string v;
+
         public Form1()
         {
             InitializeComponent();
+        }
+
+        public Form1(string v)
+        {
+            this.v = v;
         }
 
         private void button2_Click(object sender, EventArgs e)

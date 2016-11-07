@@ -18,5 +18,9 @@ namespace GameCaro
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
+        public static void main(String[] args)
+        {
+            new Form1("Dijkstra Demo");
+        }
     }
 }
