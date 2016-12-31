@@ -9,9 +9,9 @@ namespace GameCaro
 {
     public class MyDijkstra
     {
-        private int a[,];
+        private int[,] a;
 	    private int[] len, p;
-        private int[][] logLen, logP;
+        private int[,] logLen, logP;
         private Boolean[] checkedPointMin; // diem co duong di ngan nhat (da xet)
         private int infinity, size = 0;
         private LinkedList<Point> arrMyPoint = new LinkedList<Point>();
@@ -129,8 +129,8 @@ namespace GameCaro
                         p[j] = i;
 
                     }
-                    logLen[k][j] = len[j];
-                    logP[k][j] = p[j];
+                    logLen[k,j] = len[j];
+                    logP[k,j] = p[j];
                 }
                 k++;
             }
@@ -171,8 +171,8 @@ namespace GameCaro
                         len[j] = len[i] + a[i,j];
                         p[j] = i;
                     }
-                    logLen[k][j] = len[j];
-                    logP[k][j] = p[j];
+                    logLen[k,j] = len[j];
+                    logP[k,j] = p[j];
                 }
                 arrPointResultStep.add(i);
                 k++;
@@ -386,7 +386,7 @@ namespace GameCaro
             this.arrTempPoint = arrTempPoint;
         }
 
-        public boolean isStop()
+        public Boolean isStop()
         {
             return stop;
         }

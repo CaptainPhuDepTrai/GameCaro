@@ -11,14 +11,14 @@ namespace GameCaro
     class MyLine : ISerializable
     {
 
-    private static final long serialVersionUID = 1L;
-    private Line2D.Double l = new Line2D.Double();
+    private static  long serialVersionUID = 1L;
+    private DrawLine.Double l = new Line2D.Double();
     private int indexPointA, indexPointB;
     private int cost;
 
-    final int barb = 10;
-    final int r = 15;
-    final double phi = Math.PI / 6;
+     int barb = 10;
+     int r = 15;
+     double phi = Math.PI / 6;
 
     public MyLine(Line2D.Double l, int indexPointA, int indexPointB, int cost)
     {
@@ -31,17 +31,17 @@ namespace GameCaro
     private void drawArrow(Graphics g, double theta, double x0, double y0,
             Color colorLine, int size)
     {
-        double x = x0 - barb * Math.cos(theta + phi);
-        double y = y0 - barb * Math.sin(theta + phi);
-        g.setStroke(new BasicStroke(size));
+        double x = x0 - barb * Math.Cos(theta + phi);
+        double y = y0 - barb * Math.Sin(theta + phi);
+        g.stroke(new BasicStroke(size));
         g.draw(new Line2D.Double(x0, y0, x, y));
         x = x0 - barb * Math.cos(theta - phi);
         y = y0 - barb * Math.sin(theta - phi);
         g.draw(new Line2D.Double(x0, y0, x, y));
     }
 
-    public void drawLine(Graphics2D g, Point p1, Point p2, Color colorCost,
-            Color colorLine, int size, boolean type)
+    public void drawLine(Graphics g, Point p1, Point p2, Color colorCost,
+            Color colorLine, int size, Boolean type)
     {
         String c = "";
         if (cost < 0)
@@ -50,19 +50,19 @@ namespace GameCaro
         }
         else
             c = String.valueOf(cost);
-        g.setColor(colorLine);
+        g.GetNearestColor(colorLine);
         g.setStroke(new BasicStroke(size));
         double theta = Math.atan2(p2.y - p1.y, p2.x - p1.x);
-        g.draw(l);
+        g.DrawArc(l);
         if (type && cost >= 0)
         {
-            double x = p2.x - r * Math.cos(theta);
-            double y = p2.y - r * Math.sin(theta);
+            double x = p2.x - r * Math.Cos(theta);
+            double y = p2.y - r * Math.Sin(theta);
             drawArrow(g, theta, x, y, colorLine, size);
         }
 
-        g.setColor(colorCost);
-        g.drawString(c, (int)(Math.abs(p1.x + p2.x) / 2),
+        g.GetNearestColor(colorCost);
+        g.DrawString(c, (int)(Math.Abs(p1.x + p2.x) / 2),
                 (int)(p1.y + p2.y) / 2);
     }
 
